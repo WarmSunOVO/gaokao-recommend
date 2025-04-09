@@ -1,0 +1,47 @@
+<!-- pages/login/login.wxml -->
+<view class="container">
+  <view class="title">欢迎回来!</view>
+
+  <van-cell-group class="form-group">
+    <van-field
+      value="{{ account }}"
+      label="账号"
+      placeholder="请输入账号/手机号"
+      border="{{ false }}"
+      clearable
+      bind:input="onFieldInput"
+      data-field="account"
+      required
+    />
+    <van-field
+      value="{{ password }}"
+      label="密码"
+      type="password"
+      placeholder="请输入密码"
+      border="{{ false }}"
+      clearable
+      bind:input="onFieldInput"
+      data-field="password"
+      required
+    />
+  </van-cell-group>
+
+  <view class="button-group">
+    <van-button
+      type="primary"
+      block
+      round
+      color="#d81e06"
+      loading="{{ isLoading }}"
+      loading-text="登录中..."
+      bind:tap="handleLogin"
+    >
+      登 录
+    </van-button>
+  </view>
+
+  <view class="links">
+    <text class="link-item" bind:tap="gotoForgotPassword">忘记密码?</text>
+    <text class="link-item register-link" bind:tap="gotoRegister">还没有账号? <text class="highlight">注册</text></text>
+  </view>
+</view>

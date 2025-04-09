@@ -1,0 +1,71 @@
+/* pages/scoreRank/scoreRank.wxss */
+.container {
+  background-color: #f7f8fa;
+  min-height: 100vh;
+  padding-bottom: constant(safe-area-inset-bottom); /* 适配底部安全区 */
+  padding-bottom: env(safe-area-inset-bottom);
+  box-sizing: border-box;
+}
+
+/* 顶部筛选触发单元格 */
+.filter-trigger-cell.van-cell {
+   /* margin-bottom: 20rpx; */ /* 可以移除，让其紧贴下方内容 */
+   border-bottom: 1px solid #f7f8fa; /* 用页面背景色弱化边框 */
+   position: sticky; /* 让筛选栏吸顶 */
+   top: 0;
+   z-index: 10;
+   background-color: #fff; /* 吸顶时需要背景色 */
+}
+
+/* 列表容器 */
+.score-list-container {
+    /* padding: 0 20rpx; */ /* 移除，让列表撑满 */
+}
+
+.list-header {
+    text-align: center; font-size: 15px; /* 略小一点 */ font-weight: 500; /* 不用太粗 */
+    padding: 24rpx 0 16rpx 0; color: #646566; /* 标题颜色浅一点 */
+    background-color: #f7f8fa; /* 和页面背景色一致 */
+    border-bottom: 1px solid #ebedf0;
+    position: sticky; /* 让列表头吸顶 */
+    top: 44px; /* 吸顶时在筛选栏下方 (van-cell 默认高度约 44px) */
+    z-index: 9; /* 比筛选栏低一层 */
+}
+
+/* 分数列表 */
+.score-list {
+  background-color: #fff; /* 列表整体白色背景 */
+}
+
+.score-item {
+  display: flex; align-items: center; padding: 26rpx 30rpx; /* 调整内边距 */
+  font-size: 14px; color: #303133; /* 列表文字深色 */ border-bottom: 1px solid #f2f3f5; /* 分割线浅一点 */
+}
+.score-item:last-child { border-bottom: none; }
+.score-item.header {
+    background-color: #fff; /* 表头也用白色背景 */
+    color: #969799; /* 表头文字灰色 */
+    font-weight: normal; /* 表头不加粗 */
+    padding: 20rpx 30rpx; /* 表头 padding 小一点 */
+    border-bottom: 1px solid #ebedf0; /* 表头下分割线深一点 */
+}
+
+/* 列宽和对齐 */
+.score-col { flex: 1.2; text-align: center; }
+.count-col { flex: 1; text-align: center; color: #646566; } /* 人数颜色稍浅 */
+.cumulative-col { flex: 1; text-align: center; color: #646566; }
+
+/* 加载、错误、空状态 */
+.list-loading, .list-error, .list-empty {
+  text-align: center; color: #969799; padding: 150rpx 20rpx; font-size: 14px;
+}
+.list-error { color: #ee0a24; }
+
+/* Picker 样式微调 (可选) */
+.van-picker__toolbar {
+    /* 可以覆盖 Vant Picker 工具栏样式 */
+}
+.van-picker__confirm {
+    /* 可以覆盖确认按钮样式 */
+    /* color: #1989fa !important; */
+}

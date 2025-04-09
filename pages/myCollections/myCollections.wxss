@@ -1,0 +1,63 @@
+/* pages/myCollections.wxss */
+/* 引入或复制 universityQuery 和 majorQuery 的样式 */
+/* @import "../universityQuery/universityQuery.wxss"; */ /* 如果不冲突可以直接引入 */
+/* @import "../majorQuery/majorQuery.wxss"; */
+
+.container {
+  min-height: 100vh;
+  background-color: #f7f8fa;
+}
+
+/* 通用加载、错误、空状态样式 */
+.list-loading, .list-error, .list-empty {
+  text-align: center;
+  color: #969799;
+  padding: 100rpx 0;
+  font-size: 14px;
+}
+.list-error {
+   color: #ee0a24;
+}
+
+/* Tab 下方列表的通用 padding */
+.collection-list {
+  padding: 20rpx;
+}
+
+/* --- 院校卡片样式 (可从 universityQuery.wxss 复制) --- */
+.uni-card-query {
+  display: flex; align-items: center; background-color: #fff;
+  border-radius: 16rpx; padding: 20rpx; margin-bottom: 20rpx;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+.uni-card-query:last-child { margin-bottom: 0; }
+.uni-logo { flex-shrink: 0; margin-right: 20rpx; border: 1px solid #eee; border-radius: 8rpx; overflow: hidden; }
+.uni-details { flex: 1; margin-right: 20rpx; font-size: 13px; color: #606266; line-height: 1.6; overflow: hidden; }
+.uni-name { font-size: 16px; font-weight: bold; color: #303133; display: block; margin-bottom: 8rpx; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.uni-level-type, .uni-website { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.uni-website { color: #909399; font-size: 12px; }
+.fav-btn.van-button { flex-shrink: 0; margin-left: 20rpx; /* 按钮和左侧内容间距 */ }
+/* 取消收藏按钮的特殊样式 */
+.fav-btn.van-button--plain.van-button--primary[color="#ee0a24"] {
+   border-color: #ee0a24 !important;
+}
+ .fav-btn.van-button--plain.van-button--primary[color="#ee0a24"] .van-icon {
+   color: #ee0a24 !important;
+ }
+
+/* --- 专业卡片样式 (可从 majorQuery.wxss 复制) --- */
+.major-card-query {
+  display: flex; align-items: center; justify-content: space-between;
+  background-color: #fff; border-radius: 16rpx; padding: 25rpx 20rpx;
+  margin-bottom: 20rpx; box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+.major-card-query:last-child { margin-bottom: 0; }
+.major-details { font-size: 13px; color: #606266; line-height: 1.7; overflow: hidden; }
+.major-name-title { font-size: 15px; font-weight: bold; color: #303133; display: block; margin-bottom: 10rpx; }
+.major-uni-name { /* 新增大学名称样式 */
+    display: block;
+    font-size: 12px;
+    color: #909399;
+    margin-bottom: 8rpx;
+}
+.major-info { display: block; }

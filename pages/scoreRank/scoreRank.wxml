@@ -1,0 +1,60 @@
+<!-- pages/scoreRank/scoreRank.wxml -->
+<view class="container">
+  <!-- 顶部选择触发器，显示当前选择 -->
+  <van-cell
+    title="地区年份"
+    value="{{selectedProvince && selectedYear ? selectedProvince + '/' + selectedYear + '年' : '请选择'}}"
+    is-link
+    bind:click="showFilterPopup"
+    class="filter-trigger-cell"
+  />
+
+  <!-- 加载状态 -->
+  <van-loading wx:if="{{loading}}" vertical class="list-loading">加载中...</van-loading>
+  <!-- 错误提示 -->
+  <view wx:elif="{{error}}" class="list-error">{{ error }}</view>
+
+  <!-- 分数段列表容器 -->
+  <view class="score-list-container" wx:else>
+    <view class="list-header">{{selectedYear}}年{{selectedProvince}}市高考考生分数分布</view>
+    <!-- 分数段列表 -->
+    <view class="score-list">
+        <!-- 列表头 -->
+        <view class="score-item header">
+          <text class="score-col">分数</text>
+          <text class="count-col">本段人数</text>
+          <text class="cumulative-col">累计人数</text>
+        </view>
+        <!-- 列表项 (使用 wx:for 渲染) -->
+        <block wx:if="{{scoreRankData && scoreRankData.length > 0}}">
+          <view class="score-item" wx:for="{{scoreRankData}}" wx:key="score">
+            <text class="score-col">{{item.score >= 700 ? item.score + '以上' : item.score}}</text>
+            <text class="count-col">{{item.count}}</text>
+            <text class="cumulative-col">{{item.cumulative_count}}</text>
+          </view>
+        </block>
+         <!-- 空状态提示 -->
+        <view wx:else class="list-empty">暂无该条件下分数段数据</view>
+    </view>
+  </view>
+
+  <!-- 筛选弹出层 (使用 van-picker 优化) -->
+  <van-popup
+    show="{{ showPopup }}"
+    position="bottom"
+    round
+    custom-style="height: 45%;" 
+    bind:close="onClosePopup"
+  >
+    <van-picker
+      show-toolbar 
+      title="请选择地区和年份"
+      columns="{{ filterColumns }}" 
+      value-key="text" 
+      bind:cancel="onClosePopup" 
+      bind:confirm="confirmFilterPicker" 
+      visible-item-count="5" 
+      default-indices="{{ defaultPickerIndices }}" 
+    />
+  </van-popup>
+</view>

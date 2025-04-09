@@ -1,0 +1,62 @@
+<!-- pages/admissionPlan/admissionPlan.wxml -->
+<view class="container">
+  <van-search
+    value="{{ searchValue }}"
+    placeholder="搜索大学或专业名称"
+    bind:search="onSearchConfirm"
+    bind:change="onSearchInput" 
+    use-action-slot>
+     <!-- <view slot="action" bind:tap="onSearchConfirm">搜索</view> -->
+  </van-search>
+
+  <!-- 主加载/错误/空状态 -->
+  <van-loading wx:if="{{loading && planList.length === 0}}" vertical class="list-loading">加载中...</van-loading>
+  <view wx:elif="{{error && planList.length === 0}}" class="list-error">{{ error }}</view>
+  <view wx:elif="{{!loading && planList.length === 0}}" class="list-empty">
+      <text wx:if="{{searchValue}}">未找到相关招生计划</text>
+      <text wx:else>暂无招生计划数据</text>
+  </view>
+
+  <!-- 招生计划列表 -->
+  <view class="plan-list" wx:else>
+    <view class="plan-card" wx:for="{{planList}}" wx:key="id">
+      <view class="uni-name-header">
+        <text class="uni-name">{{ item.university_name || '未知大学' }}</text>
+        <van-button
+          icon="{{ favoriteUniIds.has(item.university_id) ? 'star' : 'star-o' }}"
+          type="primary"
+          size="mini"
+          plain
+          class="fav-btn"
+          color="#07c160"
+          bind:tap="toggleFavorite"
+          data-id="{{ item.university_id }}"
+        />
+      </view>
+      <view class="plan-details">
+        <view class="plan-row">
+            <text class="plan-label">专业名称:</text> <text class="plan-value">{{ item.major_name }}</text>
+        </view>
+        <view class="plan-row">
+            <text class="plan-label">录取批次:</text> <text class="plan-value">{{ item.batch || '-' }}</text>
+            <text class="plan-label">招生类别:</text> <text class="plan-value">{{ item.category || '-' }}</text>
+        </view>
+         <view class="plan-row">
+             <text class="plan-label">一级学科:</text> <text class="plan-value">{{ item.subject_group || '-' }}</text>
+             <text class="plan-label">招生人数:</text> <text class="plan-value">{{ item.plan_count != null ? item.plan_count : '-' }}</text>
+        </view>
+         <!-- 可以添加选科要求显示 -->
+         <!-- <view class="plan-row" wx:if="{{item.subject_requirements}}">
+             <text class="plan-label">选科要求:</text> <text class="plan-value">{{ item.subject_requirements }}</text>
+         </view> -->
+      </view>
+    </view>
+
+    <!-- 加载更多提示 -->
+    <view class="load-more-tip">
+        <van-loading wx:if="{{loadingMore}}" size="20px">加载中...</van-loading>
+        <text wx:elif="{{noMoreData}}">没有更多数据了</text>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "院校信息查询",
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-button": "@vant/weapp/button/index",
+    "van-icon": "@vant/weapp/icon/index"
+    
+  }
+}

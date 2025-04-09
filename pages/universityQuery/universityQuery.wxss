@@ -1,0 +1,93 @@
+/* pages/universityQuery/universityQuery.wxss */
+.container {
+  background-color: #f7f8fa;
+  min-height: 100vh;
+}
+
+/* 搜索框固定在顶部 (可选) */
+.van-search {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* 院校列表 */
+.uni-list {
+  padding: 20rpx;
+}
+
+/* 院校卡片样式 */
+.uni-card-query {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+.uni-card-query:last-child {
+  margin-bottom: 0;
+}
+
+.uni-logo {
+  flex-shrink: 0; /* 防止 logo 被压缩 */
+  margin-right: 20rpx;
+  border: 1px solid #eee; /* 给logo加个边框 */
+  border-radius: 8rpx; /* logo圆角 */
+  overflow: hidden;
+}
+
+.uni-details {
+  flex: 1; /* 占据剩余空间 */
+  margin-right: 20rpx; /* 和按钮的间距 */
+  font-size: 13px;
+  color: #606266;
+  line-height: 1.6; /* 增加行高 */
+  overflow: hidden; /* 防止内容溢出 */
+}
+
+.uni-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #303133;
+  display: block; /* 独占一行 */
+  margin-bottom: 8rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.uni-level-type,
+.uni-website {
+  display: block; /* 独占一行 */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.uni-website {
+  color: #909399; /* 网址颜色浅一点 */
+  font-size: 12px;
+}
+
+/* 收藏按钮 */
+.fav-btn.van-button {
+   flex-shrink: 0;
+   /* 根据需要调整按钮大小和样式 */
+   /* border-color: #07c160 !important; */ /* 让边框和图标同色 */
+}
+.fav-btn .van-icon {
+    /* color: #07c160 !important; */ /* 让图标颜色和按钮颜色一致 */
+}
+/* pages/universityQuery/universityQuery.wxss */
+/* ... (之前的样式) ... */
+
+.list-loading, .list-error, .list-empty {
+  text-align: center;
+  color: #969799;
+  padding: 100rpx 0;
+  font-size: 14px;
+}
+.list-error {
+   color: #ee0a24;
+}

@@ -1,0 +1,36 @@
+/* pages/index/index.wxss */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px; /* 为底部 TabBar 预留空间 */
+  box-sizing: border-box;
+  background-color: #f7f8fa; /* 淡灰色背景 */
+}
+
+.top-banner {
+  width: 100%;
+  height: auto; /* 让图片高度自适应 */
+  display: block; /* 移除图片底部可能的空隙 */
+}
+
+.func-grid {
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.grid-item-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* 填充整个 grid item */
+}
+
+.grid-text {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #646566;
+}

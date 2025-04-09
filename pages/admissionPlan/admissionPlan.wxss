@@ -1,0 +1,88 @@
+/* pages/admissionPlan/admissionPlan.wxss *//* pages/admissionPlan/admissionPlan.wxss */
+.container {
+  background-color: #f7f8fa;
+  min-height: 100vh;
+}
+
+.van-search {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.plan-list {
+  padding: 20rpx;
+}
+
+.plan-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+.plan-card:last-child {
+    margin-bottom: 0;
+}
+
+.uni-name-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15rpx;
+    padding-bottom: 15rpx;
+    border-bottom: 1px solid #ebedf0; /* 分隔线 */
+}
+
+.uni-name {
+    font-size: 16px;
+    font-weight: bold;
+    color: #303133;
+    flex: 1; /* 占据主要空间 */
+    margin-right: 15rpx; /* 和按钮间距 */
+}
+
+.fav-btn.van-button {
+    flex-shrink: 0;
+}
+
+.plan-details {
+    font-size: 13px;
+    color: #606266;
+    line-height: 1.7;
+}
+
+.plan-row {
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    margin-bottom: 8rpx;
+}
+.plan-row:last-child {
+    margin-bottom: 0;
+}
+
+.plan-label {
+    color: #909399;
+    margin-right: 8rpx;
+    flex-shrink: 0; /* 防止标签被压缩 */
+}
+
+.plan-value {
+    color: #303133;
+    margin-right: 20rpx; /* 值之间的间距 */
+}
+ .plan-value:last-child {
+    margin-right: 0;
+ }
+
+.list-loading, .list-error, .list-empty {
+  text-align: center; color: #969799; padding: 100rpx 0; font-size: 14px;
+}
+.list-error { color: #ee0a24; }
+
+.load-more-tip {
+  text-align: center;
+  color: #969799;
+  font-size: 13px;
+  padding: 30rpx 0;
+}

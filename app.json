@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/recommendInput/recommendInput",
+    "pages/profile/profile",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/volunteer/volunteer" ,
+    "pages/recommendResult/recommendResult",
+    "pages/scoreRank/scoreRank",        
+    "pages/universityQuery/universityQuery", 
+    "pages/majorQuery/majorQuery"   ,
+    "pages/myCollections/myCollections",
+    "pages/provinceLine/provinceLine",   
+    "pages/admissionPlan/admissionPlan" 
+   
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "高考志愿助手",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#bfbfbf", 
+    "selectedColor": "#d81e06", 
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tabbar/home-inactive.png", 
+        "selectedIconPath": "images/tabbar/home-active.png" 
+      },
+      {
+        "pagePath": "pages/volunteer/volunteer", 
+        "text": "志愿表",
+        "iconPath": "images/tabbar/volunteer-inactive.png", 
+        "selectedIconPath": "images/tabbar/volunteer-active.png" 
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "个人中心",
+        "iconPath": "images/tabbar/profile-inactive.png", 
+        "selectedIconPath": "images/tabbar/profile-active.png" 
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index",
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-tag": "@vant/weapp/tag/index" 
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

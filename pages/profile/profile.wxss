@@ -1,0 +1,217 @@
+/* pages/profile/profile.wxss */
+/* --- 样式完全重写以匹配 "目标图片 b" --- */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f7f8fa; /* 页面背景色 */
+  padding-bottom: 50px; /* 为底部 TabBar 预留空间 */
+  box-sizing: border-box;
+}
+
+/* 顶部区域 - 背景图 */
+.profile-header {
+  padding: 30rpx 30rpx 0 30rpx;
+  background-color: #444; /* 默认背景色 */
+  background-size: cover;
+  background-position: center bottom; /* 背景图位置 */
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 用户信息行 */
+.user-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  position: relative; /* 用于定位 Logo */
+  height: 60px;
+  color: #fff; /* 顶部文字颜色 */
+}
+
+/* 通用头像 */
+.avatar {
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.7); /* 白色边框 */
+}
+
+/* 未登录状态 - 游客信息 */
+.user-interaction-area {
+  display: flex;
+  align-items: center;
+}
+.user-info-guest {
+  margin-left: 20rpx;
+}
+.nickname-guest {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* 中间 Logo (目标图片b 特有) */
+.center-logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  opacity: 0.8;
+}
+
+/* 已登录状态 - 用户信息 (保留你之前的样式) */
+.user-info-logged-in {
+  flex: 1;
+  margin-left: 20rpx;
+  overflow: hidden;
+}
+.nickname-logged-in {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 5rpx;
+}
+.user-id-logged-in {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.logout-btn {
+  position: absolute;
+  top: 5px;
+  right: 0;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+}
+.logout-btn .van-button__text {
+  color: #ffffff !important;
+}
+
+/* 会员卡片 - 匹配目标图片 b */
+.member-card-target {
+  background: linear-gradient(90deg, #3e3e3e, #585858); /* 深色渐变 */
+  border-radius: 16rpx 16rpx 0 0; /* 顶部圆角 */
+  padding: 20rpx 25rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #f5d0a0; /* 金色文字 */
+  position: relative; /* 用于定位装饰 */
+  overflow: hidden; /* 防止装饰溢出 */
+}
+.member-left {
+  display: flex;
+  flex-direction: column;
+}
+.member-title-line {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5rpx;
+}
+.vip-icon {
+  margin-right: 8rpx;
+}
+.member-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+.member-subtitle {
+   font-size: 12px;
+   color: rgba(245, 208, 160, 0.8);
+}
+.member-right {
+    display: flex;
+    align-items: center;
+}
+.activate-btn-target { /* 目标图片 b 的按钮样式 */
+  border-color: #f3d1a1 !important;
+  margin-right: 40rpx; /* 和装饰的间距 */
+}
+.activate-btn-target .van-button__text {
+  color: #f3d1a1 !important;
+}
+.activate-btn-target.van-button--hairline::after {
+   border: none !important; /* 无细边框 */
+}
+.activate-btn-target.van-button--round {
+    border-radius: 20px !important; /* 圆角 */
+}
+.card-decoration { /* 粉色装饰 */
+  position: absolute;
+  right: -20rpx;
+  top: 0;
+  height: 100%;
+  width: auto;
+}
+
+/* 中部快捷入口 Grid - 匹配目标图片 b */
+.quick-nav-target {
+  margin: 20rpx 0;
+  background-color: #fff; /* 白色背景 */
+}
+.quick-nav-target .van-grid-item__content {
+  padding: 30rpx 0 !important; /* 增加上下内边距 */
+}
+.quick-nav-target .van-grid-item .van-grid-item__text {
+  font-size: 13px !important; /* 文字大小 */
+  color: #646566 !important; /* 文字颜色 */
+}
+
+/* 最近播放 - 匹配目标图片 b */
+.recent-play-target {
+  margin: 0 0 20rpx 0;
+  background-color: #fff; /* 确保背景白色 */
+}
+.recent-play-target .van-cell-group__title {
+  padding: 20rpx 30rpx 10rpx 30rpx;
+  font-size: 14px;
+  color: #606266; /* 标题颜色 */
+  background-color: #fff; /* 标题背景 */
+  margin: 0;
+}
+.recent-play-target .van-cell {
+  padding: 20rpx 30rpx !important;
+  background-color: #fff;
+}
+.no-play-record {
+  font-size: 14px;
+  color: #909399; /* 提示文字颜色 */
+}
+
+/* 核心服务列表 - 匹配目标图片 b */
+.core-services-target.van-cell-group {
+  margin-top: 0;
+  background-color: #fff;
+}
+.core-services-target .van-cell-group__title {
+    display: none; /* 目标图片b 此处无标题 */
+}
+.core-services-target .van-cell {
+  padding: 25rpx 30rpx !important; /* 内边距 */
+  background-color: #fff;
+}
+.core-services-target .van-cell::after { /* 分隔线 */
+  right: -30rpx;
+  left: 30rpx;
+}
+.core-services-target .van-cell:last-child::after {
+    display: none;
+}
+.core-services-target .van-cell__title {
+  font-size: 15px;
+  color: #303133;
+}
+.core-services-target .van-cell__right-icon {
+  color: #c8c9cc; /* 箭头颜色 */
+}
+
+/* 底部安全区域占位 */
+.safe-area-bottom {
+  height: constant(safe-area-inset-bottom);
+  height: env(safe-area-inset-bottom);
+  background-color: #f7f8fa;
+}

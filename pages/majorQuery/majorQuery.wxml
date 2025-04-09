@@ -1,0 +1,48 @@
+<!-- pages/majorQuery/majorQuery.wxml -->
+<view class="container">
+  <van-search
+    value="{{ searchValue }}"
+    placeholder="搜索专业或分类"
+    bind:search="onSearchConfirm"
+    bind:change="onSearchInput"
+  />
+
+  <van-loading wx:if="{{loading}}" vertical class="list-loading">加载中...</van-loading>
+  <view wx:elif="{{error}}" class="list-error">{{ error }}</view>
+
+  <view class="major-list-grouped" wx:else>
+    <block wx:if="{{ filteredGroups.length > 0 }}">
+      <!-- Loop through categories -->
+      <view class="major-category" wx:for="{{ filteredGroups }}" wx:for-item="group" wx:key="categoryName">
+        <view class="category-title">{{ group.categoryName }}</view>
+        <!-- Loop through majors in the category -->
+        <view class="major-card-query" wx:for="{{ group.majors }}" wx:for-item="major" wx:key="id">
+          <view class="major-details">
+            <text class="major-name-title">{{ major.name }}</text>
+            <text class="major-info">专业代码: {{ major.code || '-' }}</text>
+            <text class="major-info">修业年限: {{ major.duration || '-' }}</text>
+            <text class="major-info">授予学位: {{ major.degree || '-' }}</text>
+          </view>
+          <!-- Favorite Button -->
+          <van-button
+            icon="{{ favoriteIds.has(major.id) ? 'star' : 'star-o' }}"
+            type="primary"
+            size="small"
+            plain
+            class="fav-btn"
+            color="#07c160"
+            bind:tap="toggleFavorite" 
+            data-id="{{ major.id }}" 
+          />
+        </view>
+         <!-- Optional: message if no majors match within a category during search -->
+        <view wx:if="{{ group.majors.length === 0 && searchValue }}" class="no-major-in-category">该分类下无匹配专业</view>
+      </view>
+    </block>
+     <!-- Message if no groups/majors match the search at all -->
+     <view wx:else class="list-empty">
+       <text wx:if="{{searchValue}}">未找到相关专业或分类</text>
+       <text wx:else>暂无专业数据</text>
+     </view>
+  </view>
+</view>

@@ -1,0 +1,89 @@
+/* pages/majorQuery/majorQuery.wxss */
+.container {
+  background-color: #f7f8fa;
+  min-height: 100vh;
+}
+
+.van-search {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.major-list-grouped {
+  padding: 20rpx;
+}
+
+.major-category {
+  margin-bottom: 30rpx; /* 分类之间的间距 */
+}
+.major-category:last-child {
+   margin-bottom: 0;
+}
+
+.category-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #303133;
+  margin-bottom: 20rpx;
+  padding-left: 10rpx; /* 左侧一点缩进 */
+  border-left: 4px solid #1989fa; /* 左侧加个蓝色竖线 */
+  line-height: 1;
+}
+
+/* 专业卡片样式 */
+.major-card-query {
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: space-between; /* 信息和按钮两端对齐 */
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 25rpx 20rpx; /* 增加上下 padding */
+  margin-bottom: 20rpx;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+}
+ .major-card-query:last-child {
+   margin-bottom: 0;
+}
+
+.major-details {
+  font-size: 13px;
+  color: #606266;
+  line-height: 1.7; /* 增加行高 */
+  overflow: hidden;
+}
+
+.major-name-title {
+  font-size: 15px; /* 专业名称大一点 */
+  font-weight: bold;
+  color: #303133;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.major-info {
+  display: block; /* 信息项各占一行 */
+}
+
+.fav-btn.van-button {
+   flex-shrink: 0;
+   margin-left: 20rpx; /* 和左侧信息的间距 */
+}
+/* pages/majorQuery/majorQuery.wxss */
+/* ... (之前的样式) ... */
+
+.list-loading, .list-error, .list-empty {
+  text-align: center;
+  color: #969799;
+  padding: 100rpx 0;
+  font-size: 14px;
+}
+ .list-error {
+   color: #ee0a24;
+}
+.no-major-in-category {
+    font-size: 13px;
+    color: #969799;
+    text-align: center;
+    padding: 20rpx 0;
+}

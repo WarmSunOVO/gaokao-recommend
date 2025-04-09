@@ -1,0 +1,47 @@
+<view class="container">
+  <!-- 顶部 Banner 图片 -->
+  <image class="top-banner" src="/images/gaokao-banner.png" mode="widthFix"></image> 
+
+  <!-- 功能入口 Grid -->
+  <van-grid column-num="3" border="{{ false }}" square class="func-grid">
+    <van-grid-item use-slot bind:click="navigateToRecommend"> <!-- 绑定 navigateToRecommend -->
+  <view class="grid-item-content">
+    <van-icon name="good-job-o" size="32px" color="#ff976a"/>
+    <text class="grid-text">志愿推荐</text>
+  </view>
+</van-grid-item>
+<van-grid-item use-slot bind:click="navigateToMajorQuery"> <!-- <--- 确认这里的 bind:click 和函数名 -->
+  <view class="grid-item-content">
+    <van-icon name="search" size="32px" color="#1989fa"/>
+    <text class="grid-text">查专业</text>
+  </view>
+</van-grid-item>
+<van-grid-item use-slot bind:click="navigateToScoreRank"> <!-- <--- 确认这里的 bind:click 和函数名 -->
+  <view class="grid-item-content">
+    <van-icon name="notes-o" size="32px" color="#07c160"/>
+    <text class="grid-text">一分一段表</text>
+  </view>
+</van-grid-item>
+    <van-grid-item use-slot bind:click="navigateToProvinceLine"> <!-- 绑定省控线跳转 -->
+  <view class="grid-item-content">
+    <van-icon name="location-o" size="32px" color="#ee0a24"/>
+    <text class="grid-text">省控线</text>
+  </view>
+</van-grid-item>
+    <van-grid-item use-slot bind:click="navigateToUniversityQuery"> <!-- <--- 确认这里的 bind:click 和函数名 -->
+  <view class="grid-item-content">
+    <van-icon name="wap-home-o" size="32px" color="#7232dd"/>
+    <text class="grid-text">大学信息</text>
+  </view>
+</van-grid-item>
+<!-- ... 大学信息 ... -->
+<van-grid-item use-slot bind:click="navigateToAdmissionPlan"> <!-- 绑定招生计划跳转 -->
+  <view class="grid-item-content">
+    <van-icon name="records" size="32px" color="#323233"/>
+    <text class="grid-text">招生计划</text>
+  </view>
+</van-grid-item>
+  </van-grid>
+
+  <!-- 底部 TabBar 在 app.json 定义，这里不需要写 -->
+</view>

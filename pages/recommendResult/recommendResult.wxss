@@ -1,0 +1,133 @@
+/* pages/recommendResult/recommendResult.wxss */
+.container {
+  /* Tabs 会占据整个屏幕，不需要额外 container 样式 */
+}
+
+/* 加载指示器样式 */
+.loading-indicator {
+  position: absolute; /* 或者 fixed */
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* Tab 下方的内容区域增加上下边距和背景色 */
+.recommend-list {
+  padding: 20rpx;
+  background-color: #f7f8fa; /* 列表背景色 */
+  min-height: calc(100vh - 44px - 20rpx - 20rpx); /* 估算 Tab 高度 + 上下 padding，让背景色充满 */
+  box-sizing: border-box;
+}
+
+/* 大学卡片样式 */
+.uni-card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  padding: 20rpx;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05); /* 加一点阴影 */
+}
+.uni-card:last-child {
+  margin-bottom: 0;
+}
+
+.uni-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 15rpx;
+  margin-bottom: 15rpx;
+  border-bottom: 1px solid #ebedf0; /* 分隔线 */
+}
+
+.uni-info {
+  flex: 1;
+  margin-right: 20rpx; /* 和按钮的间距 */
+  overflow: hidden; /* 防止名字过长 */
+}
+
+.uni-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #303133;
+  display: block;
+  margin-bottom: 8rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.uni-tags .uni-tag {
+  margin-right: 10rpx;
+  /* 可以调整 Tag 颜色或样式 */
+}
+.uni-tags .uni-tag:last-child {
+  margin-right: 0;
+}
+
+.add-btn.van-button {
+  width: 60rpx; /* 固定按钮宽度 */
+  height: 60rpx; /* 固定按钮高度 */
+  padding: 0; /* 移除默认 padding */
+  flex-shrink: 0; /* 防止按钮被压缩 */
+}
+.add-btn .van-icon {
+   font-size: 36rpx !important; /* 调整图标大小 */
+   line-height: 60rpx; /* 图标垂直居中 */
+}
+
+/* 专业列表 */
+.majors-list {
+  /* 可以不加额外样式 */
+}
+
+.major-item {
+  border: 1px solid #dcdfe6; /* 浅灰色边框 */
+  border-radius: 8rpx;
+  padding: 15rpx 20rpx;
+  margin-bottom: 15rpx;
+  font-size: 13px;
+  color: #606266;
+  display: flex; /* 让内部元素水平排列并换行 */
+  flex-wrap: wrap;
+  /* justify-content: space-between; */ /* 可能导致单行元素间距过大，先不用 */
+}
+.major-item:last-child {
+  margin-bottom: 0;
+}
+
+.major-name {
+   /* font-weight: bold; */ /* 专业名称是否加粗？ */
+   margin-right: 20rpx; /* 和其他信息的间距 */
+   flex-basis: 100%; /* 尝试让名称单独占一行 */
+   margin-bottom: 8rpx;
+   color: #303133; /* 专业名称颜色深一点 */
+}
+
+.major-detail {
+   /* 计划招生人数和概率的样式 */
+   margin-right: 15rpx;
+   line-height: 1.4; /* 增加行高，避免文字挤在一起 */
+}
+.major-detail:last-child {
+    margin-right: 0;
+}
+
+/* 空状态提示 */
+.empty-tip {
+  text-align: center;
+  padding: 100rpx 0;
+  color: #969799;
+  font-size: 14px;
+}
+
+/* --- 可选：自定义 Tab 样式 --- */
+/*
+.van-tabs__line {
+  background-color: #1989fa !important; // 底部线条颜色
+}
+.van-tab--active {
+   color: #1989fa !important; // 选中 Tab 文字颜色
+}
+*/

@@ -1,0 +1,13 @@
+/* pages/register/register.wxss */
+/* 引入 login 页面的样式 */
+@import "../login/login.wxss";
+
+/* 注册页可以调整按钮的上边距 */
+.button-group {
+  margin-top: 60rpx;
+}
+
+/* 注册页只有一个链接，居中显示 */
+.links {
+  justify-content: center;
+}

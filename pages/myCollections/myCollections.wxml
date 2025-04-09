@@ -1,0 +1,71 @@
+<!-- pages/myCollections.wxml -->
+<view class="container">
+  <van-loading wx:if="{{loading}}" vertical class="list-loading">加载中...</van-loading>
+  <view wx:elif="{{error}}" class="list-error">{{ error }}</view>
+
+  <block wx:else>
+    <van-tabs active="{{ activeTab }}" bind:change="onTabChange" sticky>
+      <!-- 收藏的院校 Tab -->
+      <van-tab title="收藏的院校">
+        <view class="collection-list">
+          <block wx:if="{{ favoriteUniversities.length > 0 }}">
+            <!-- 复用 universityQuery 的卡片结构 -->
+            <view class="uni-card-query" wx:for="{{ favoriteUniversities }}" wx:key="id">
+               <van-image class="uni-logo" width="60" height="60" src="{{ item.logo_url || '/images/avatar-default.png' }}" fit="contain" />
+               <view class="uni-details">
+                 <text class="uni-name">{{ item.name }}</text>
+                 <text class="uni-level-type">级别: {{ item.level || '-' }}</text>
+                 <text class="uni-level-type">类型: {{ item.type || '-' }}</text>
+                 <text class="uni-website" bind:tap="copyWebsite" data-url="{{item.website_url}}">招生网址: {{ item.website_url || '-' }}</text>
+               </view>
+               <!-- 取消收藏按钮 -->
+               <van-button
+                 icon="star" 
+                 type="primary"
+                 size="small"
+                 plain
+                 class="fav-btn"
+                 color="#ee0a24" 
+                 bind:tap="removeFavorite"
+                 data-id="{{ item.id }}"
+                 data-type="university"
+               />
+            </view>
+          </block>
+          <view wx:else class="list-empty">暂无收藏的院校</view>
+        </view>
+      </van-tab>
+
+      <!-- 收藏的专业 Tab -->
+      <van-tab title="收藏的专业">
+        <view class="collection-list">
+          <block wx:if="{{ favoriteMajors.length > 0 }}">
+             <!-- 复用 majorQuery 的卡片结构 -->
+             <view class="major-card-query" wx:for="{{ favoriteMajors }}" wx:key="id">
+               <view class="major-details">
+                 <text class="major-name-title">{{ item.name }}</text>
+                 <text class="major-uni-name">所属院校: {{ item.university_name || '-' }}</text> <!-- 显示大学名称 -->
+                 <text class="major-info">专业代码: {{ item.code || '-' }}</text>
+                 <text class="major-info">修业年限: {{ item.duration || '-' }}</text>
+                 <text class="major-info">授予学位: {{ item.degree || '-' }}</text>
+               </view>
+                <!-- 取消收藏按钮 -->
+               <van-button
+                 icon="star" 
+                 type="primary"
+                 size="small"
+                 plain
+                 class="fav-btn"
+                 color="#ee0a24" 
+                 bind:tap="removeFavorite"
+                 data-id="{{ item.id }}"
+                 data-type="major"
+               />
+             </view>
+          </block>
+          <view wx:else class="list-empty">暂无收藏的专业</view>
+        </view>
+      </van-tab>
+    </van-tabs>
+  </block>
+</view>

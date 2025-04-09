@@ -1,0 +1,96 @@
+<!-- pages/register/register.wxml -->
+<view class="container">
+  <view class="title">欢迎注册!</view>
+
+  <van-cell-group class="form-group">
+    <van-field
+      value="{{ account }}"
+      label="账号"
+      placeholder="请输入账号"
+      border="{{ false }}"
+      clearable
+      bind:input="onFieldInput"
+      data-field="account"
+      required
+    />
+    <van-field
+      value="{{ name }}"
+      label="姓名"
+      placeholder="请输入姓名 (可选)"
+      border="{{ false }}"
+      clearable
+      bind:input="onFieldInput"
+      data-field="name"
+    />
+    <van-field
+      value="{{ phone }}"
+      label="手机号码"
+      type="tel"
+      placeholder="请输入手机号码"
+      border="{{ false }}"
+      clearable
+      bind:input="onFieldInput"
+      data-field="phone"
+      required
+    />
+    <van-field
+      value="{{ gender }}"
+      label="性别"
+      placeholder="请输入性别 (可选)"
+      border="{{ false }}"
+      clearable
+      bind:input="onFieldInput"
+      data-field="gender"
+    />
+    <van-field
+      value="{{ idCard }}"
+      label="身份证号"
+      type="idcard"
+      placeholder="请输入身份证号码 (可选)"
+      border="{{ false }}"
+      clearable
+      bind:input="onFieldInput"
+      data-field="idCard"
+    />
+    <van-field
+      value="{{ password }}"
+      label="密码"
+      type="password"
+      placeholder="请设置密码 (6-16位)"
+      border="{{ false }}"
+      clearable
+      bind:input="onFieldInput"
+      data-field="password"
+      required
+    />
+    <van-field
+      value="{{ confirmPassword }}"
+      label="确认密码"
+      type="password"
+      placeholder="请再次输入密码"
+      border="{{ false }}"
+      clearable
+      bind:input="onFieldInput"
+      data-field="confirmPassword"
+      required
+    />
+  </van-cell-group>
+
+  <view class="button-group">
+    <van-button
+      type="danger"
+      block
+      round
+      color="#d81e06"
+      loading="{{ isLoading }}"
+      loading-text="注册中..."
+      bind:tap="handleRegister"
+    >
+      注 册
+    </van-button>
+  </view>
+
+  <view class="links">
+     <text class="link-item" bind:tap="gotoLogin">已有账号? <text class="highlight">去登录</text></text>
+   </view>
+</view>

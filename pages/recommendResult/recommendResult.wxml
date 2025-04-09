@@ -1,0 +1,111 @@
+<!-- pages/recommendResult/recommendResult.wxml -->
+<view class="container">
+  <!-- 加载状态 -->
+  <van-loading wx:if="{{isLoading}}" vertical size="24px" text-size="14px" class="loading-indicator">加载中...</van-loading>
+
+  <!-- 数据加载完成后显示 Tabs -->
+  <block wx:else>
+    <van-tabs active="{{ activeTab }}" bind:change="onTabChange" sticky swipeable>
+
+      <!-- === 可冲 Tab === -->
+      <van-tab title="可冲">
+        <view class="recommend-list">
+          <!-- 判断是否有可冲数据 -->
+          <block wx:if="{{ recommendations.chong && recommendations.chong.length > 0 }}">
+            <!-- 循环渲染大学卡片 -->
+            <view class="uni-card" wx:for="{{ recommendations.chong }}" wx:for-item="uni" wx:key="id">
+              <!-- 大学头部信息 -->
+              <view class="uni-header">
+                <view class="uni-info">
+                  <text class="uni-name">{{ uni.name }}</text>
+                  <view class="uni-tags">
+                    <van-tag plain type="primary" class="uni-tag" wx:for="{{ uni.tags }}" wx:for-item="tag" wx:key="*this">{{ tag }}</van-tag>
+                  </view>
+                </view>
+                <van-button icon="plus" type="primary" size="small" round class="add-btn" color="#07c160" bind:tap="addToVolunteer" data-uni="{{ uni }}" data-major="{{ null }}"/>
+              </view>
+              <!-- 专业列表 -->
+              <view class="majors-list">
+                <view class="major-item" wx:for="{{ uni.majors }}" wx:for-item="major" wx:key="id">
+                   <text class="major-name">专业名称: {{ major.name }}</text>
+                   <text class="major-detail">计划招生人数: {{ major.planCount || 'N/A' }}</text>
+                   <text class="major-detail">录取概率: {{ major.probability || 'N/A' }}%</text>
+                   <!-- 可在此处添加针对单个专业的添加按钮 -->
+                   <!-- <van-button icon="plus" size="mini" ... /> -->
+                </view>
+              </view>
+            </view>
+          </block>
+          <!-- 无数据提示 -->
+          <view wx:else class="empty-tip">暂无可冲推荐</view>
+        </view>
+      </van-tab>
+
+      <!-- === 稳定 Tab === -->
+      <van-tab title="稳定">
+        <view class="recommend-list">
+          <!-- 判断是否有稳定数据 -->
+          <block wx:if="{{ recommendations.wen && recommendations.wen.length > 0 }}">
+            <!-- 循环渲染大学卡片 -->
+            <view class="uni-card" wx:for="{{ recommendations.wen }}" wx:for-item="uni" wx:key="id">
+              <!-- 大学头部信息 -->
+              <view class="uni-header">
+                <view class="uni-info">
+                  <text class="uni-name">{{ uni.name }}</text>
+                  <view class="uni-tags">
+                    <van-tag plain type="primary" class="uni-tag" wx:for="{{ uni.tags }}" wx:for-item="tag" wx:key="*this">{{ tag }}</van-tag>
+                  </view>
+                </view>
+                <van-button icon="plus" type="primary" size="small" round class="add-btn" color="#07c160" bind:tap="addToVolunteer" data-uni="{{ uni }}" data-major="{{ null }}"/>
+              </view>
+              <!-- 专业列表 -->
+              <view class="majors-list">
+                <view class="major-item" wx:for="{{ uni.majors }}" wx:for-item="major" wx:key="id">
+                   <text class="major-name">专业名称: {{ major.name }}</text>
+                   <text class="major-detail">计划招生人数: {{ major.planCount || 'N/A' }}</text>
+                   <text class="major-detail">录取概率: {{ major.probability || 'N/A' }}%</text>
+                </view>
+              </view>
+            </view>
+          </block>
+          <!-- 无数据提示 -->
+          <view wx:else class="empty-tip">暂无稳定推荐</view>
+        </view>
+      </van-tab>
+
+      <!-- === 危险 Tab === -->
+      <van-tab title="危险">
+        <view class="recommend-list">
+          <!-- **关键：这里使用和上面完全一样的结构来渲染危险数据** -->
+          <!-- 判断是否有危险数据 -->
+          <block wx:if="{{ recommendations.wei && recommendations.wei.length > 0 }}">
+            <!-- 循环渲染大学卡片 -->
+            <view class="uni-card" wx:for="{{ recommendations.wei }}" wx:for-item="uni" wx:key="id">
+              <!-- 大学头部信息 -->
+              <view class="uni-header">
+                <view class="uni-info">
+                  <text class="uni-name">{{ uni.name }}</text>
+                  <view class="uni-tags">
+                    <van-tag plain type="primary" class="uni-tag" wx:for="{{ uni.tags }}" wx:for-item="tag" wx:key="*this">{{ tag }}</van-tag>
+                  </view>
+                </view>
+                <van-button icon="plus" type="primary" size="small" round class="add-btn" color="#07c160" bind:tap="addToVolunteer" data-uni="{{ uni }}" data-major="{{ null }}"/>
+              </view>
+              <!-- 专业列表 -->
+              <view class="majors-list">
+                <view class="major-item" wx:for="{{ uni.majors }}" wx:for-item="major" wx:key="id">
+                   <text class="major-name">专业名称: {{ major.name }}</text>
+                   <text class="major-detail">计划招生人数: {{ major.planCount || 'N/A' }}</text>
+                   <text class="major-detail">录取概率: {{ major.probability || 'N/A' }}%</text>
+                </view>
+              </view>
+            </view>
+          </block>
+          <!-- 无数据提示 -->
+          <view wx:else class="empty-tip">暂无危险推荐</view>
+        </view>
+      </van-tab>
+
+    </van-tabs>
+  </block>
+</view>

@@ -1,0 +1,60 @@
+/* pages/login/login.wxss */
+.container {
+  padding: 80rpx 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px; /* 48rpx */
+  font-weight: bold;
+  margin-bottom: 60rpx;
+  color: #303133;
+}
+
+.form-group {
+  width: 100%;
+  /* 使用 Vant Field 的 border="{{ false }}" 后，手动添加下边框 */
+}
+.form-group .van-cell {
+    padding-left: 0 !important; /* 让 label 和输入框左对齐 */
+    padding-right: 0 !important;
+}
+.form-group .van-cell::after {
+    content: ' ';
+    position: absolute;
+    bottom: 0;
+    left: 0; /* 从最左边开始 */
+    right: 0; /* 宽度 100% */
+    height: 1px;
+    background-color: #ebedf0; /* Vant 的边框颜色 */
+    transform: scaleY(0.5);
+}
+.form-group .van-cell:last-child::after {
+    display: none; /* 最后一个输入框不要下边框 */
+}
+
+
+.button-group {
+  width: 100%;
+  margin-top: 80rpx;
+}
+
+.links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40rpx;
+  font-size: 14px; /* 28rpx */
+  color: #909399;
+}
+
+.link-item {
+  padding: 10rpx; /* 增大点击区域 */
+}
+
+.register-link .highlight {
+  color: #d81e06; /* 注册文字高亮颜色 */
+  font-weight: bold;
+}

@@ -1,0 +1,75 @@
+<!-- pages/profile/profile.wxml -->
+<view class="container">
+  <!-- 顶部背景和用户信息区域 - 样式匹配目标图片 b -->
+  <view class="profile-header" style="background-image: url('/images/profile-concert-bg.png');"> <!-- 1. 需要图片: /images/profile-concert-bg.png (演唱会/人群背景) -->
+
+    <!-- 用户信息行 -->
+    <view class="user-section">
+      <!-- 未登录状态: 视图根据目标图片 b 修改 -->
+      <block wx:if="{{ !isLoggedIn }}">
+        <view class="user-interaction-area" bind:tap="gotoLogin">
+          <van-image class="avatar" round width="55px" height="55px" src="/images/avatar-default.png" /> <!-- 2. 需要图片: /images/avatar-default.png -->
+          <view class="user-info-guest">
+            <text class="nickname-guest">游客</text>
+          </view>
+        </view>
+        <!-- 中间的 Logo -->
+        <image class="center-logo" src="/images/music-logo.png" mode="aspectFit"/> <!-- 3. 需要图片: /images/music-logo.png -->
+      </block>
+
+      <!-- 已登录状态: 保留你原来的结构 -->
+      <block wx:else>
+        <van-image class="avatar" round width="60px" height="60px" src="{{ userInfo.avatarUrl || '/images/avatar-default.png' }}" />
+        <view class="user-info-logged-in">
+          <text class="nickname-logged-in">{{ userInfo.nickName || '高考用户' }}</text>
+          <text class="user-id-logged-in">ID: {{ userInfo.id || 'N/A' }}</text>
+        </view>
+        <van-button plain hairline round size="mini" color="#ffffff" class="logout-btn" bind:tap="handleLogout">
+            退出登录
+        </van-button>
+      </block>
+    </view>
+
+    <!-- 会员卡片区域 - 样式匹配目标图片 b -->
+    <view class="member-card-target" bind:tap="{{ isLoggedIn ? 'gotoMembership' : 'gotoLogin' }}">
+       <view class="member-left">
+         <view class="member-title-line">
+           <van-icon name="vip-card-o" size="16px" color="#f5d0a0" class="vip-icon"/>
+           <text class="member-title">会员</text>
+         </view>
+         <text class="member-subtitle">manster union</text>
+       </view>
+       <view class="member-right">
+         <van-button plain hairline round size="mini" color="#f3d1a1" class="activate-btn-target">
+           立即开通
+         </van-button>
+         <image class="card-decoration" src="/images/card-deco.png" mode="heightFix"/> <!-- 4. 需要图片: /images/card-deco.png (粉色装饰) -->
+       </view>
+    </view>
+  </view>
+
+  <!-- 中部快捷入口 - 样式匹配目标图片 b (Grid 形式) -->
+  <van-grid column-num="4" border="{{ false }}" clickable class="quick-nav-target">
+    <van-grid-item text="我的消息" bind:click="handleGridClick" data-target="message"/>
+    <van-grid-item text="我的好友" bind:click="handleGridClick" data-target="friends"/>
+    <van-grid-item text="个人主页" bind:click="handleGridClick" data-target="homepage"/>
+    <van-grid-item text="个性装扮" bind:click="handleGridClick" data-target="style"/>
+  </van-grid>
+
+  <!-- 最近播放 - 样式匹配目标图片 b -->
+  <van-cell-group title="最近播放" class="recent-play-target">
+     <van-cell>
+       <view class="no-play-record">暂无播放记录</view>
+     </van-cell>
+  </van-cell-group>
+
+  <!-- 核心功能列表 - 样式匹配目标图片 b -->
+  <van-cell-group class="core-services-target">
+  <van-cell title="我的志愿" is-link data-url="/pages/myVolunteer/myVolunteer" bind:click="checkLoginAndNavigate" />
+  <van-cell title="我的收藏" is-link data-url="/pages/myCollections/myCollections" bind:click="checkLoginAndNavigate" /> <!-- <--- 检查这一行 -->
+  <van-cell title="我的大学" is-link data-url="/pages/myUniversity/myUniversity" bind:click="checkLoginAndNavigate" />
+</van-cell-group>
+
+  <!-- 底部安全区域占位 -->
+  <view class="safe-area-bottom"></view>
+</view>

@@ -1,0 +1,47 @@
+<!-- pages/universityQuery/universityQuery.wxml -->
+<view class="container">
+  <van-search
+    value="{{ searchValue }}"
+    placeholder="请输入搜索关键词"
+    bind:search="onSearchConfirm"
+    bind:change="onSearchInput" 
+    use-action-slot
+  >
+    <!-- <view slot="action" bind:tap="onSearchConfirm">搜索</view> -->
+  </van-search>
+
+  <!-- 加载状态 -->
+  <van-loading wx:if="{{loading}}" vertical class="list-loading">加载中...</van-loading>
+  <!-- 错误提示 -->
+  <view wx:elif="{{error}}" class="list-error">{{ error }}</view>
+
+  <!-- 大学列表 -->
+  <view class="uni-list" wx:else>
+    <block wx:if="{{ filteredList.length > 0 }}">
+      <view class="uni-card-query" wx:for="{{ filteredList }}" wx:key="id">
+        <van-image class="uni-logo" width="60" height="60" src="{{ item.logo_url || '/images/avatar-default.png' }}" fit="contain" />
+        <view class="uni-details">
+          <text class="uni-name">{{ item.name }}</text>
+          <text class="uni-level-type">级别: {{ item.level || '-' }}</text>
+          <text class="uni-level-type">类型: {{ item.type || '-' }}</text>
+          <text class="uni-website" bind:tap="copyWebsite" data-url="{{item.website_url}}">招生网址: {{ item.website_url || '-' }}</text>
+        </view>
+        <!-- 收藏按钮，根据 favoriteIds 改变图标 -->
+        <van-button
+          icon="{{ favoriteIds.has(item.id) ? 'star' : 'star-o' }}"
+          type="primary"
+          size="small"
+          plain
+          class="fav-btn"
+          color="#07c160"
+          bind:tap="toggleFavorite"
+          data-id="{{ item.id }}"
+        />
+      </view>
+    </block>
+    <view wx:else class="list-empty">
+      <text wx:if="{{searchValue}}">未找到相关院校</text>
+      <text wx:else>暂无院校数据</text>
+    </view>
+  </view>
+</view>

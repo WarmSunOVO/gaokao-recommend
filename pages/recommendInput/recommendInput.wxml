@@ -1,0 +1,74 @@
+<!-- pages/recommendInput/recommendInput.wxml -->
+<view class="container">
+  <van-cell-group inset>
+    <!-- Use van-field for input, bind values -->
+    <van-field
+      label="姓名"
+      placeholder="请输入姓名"
+      value="{{ name }}"
+      bind:input="onFieldInput"
+      data-field="name"
+      required
+    />
+    <!-- 省份通常用 Picker 选择，这里先用 Field 简化 -->
+     <van-field
+      label="高考省份"
+      placeholder="请输入省份"
+      value="{{ province }}"
+      bind:input="onFieldInput"
+      data-field="province"
+      required
+    />
+
+    <van-collapse value="{{ activeCollapse }}" bind:change="onCollapseChange">
+      <van-collapse-item title="请选择科目" name="subjects" required>
+        <van-checkbox-group value="{{ checkedSubjects }}" bind:change="onCheckboxChange" direction="vertical" class="subject-checkbox-group">
+          <!-- Checkbox items remain the same -->
+          <van-checkbox name="语文" shape="square">语文</van-checkbox>
+          <van-checkbox name="数学" shape="square">数学</van-checkbox>
+          <van-checkbox name="英语" shape="square">英语</van-checkbox>
+          <van-checkbox name="历史" shape="square">历史</van-checkbox>
+          <van-checkbox name="地理" shape="square">地理</van-checkbox>
+          <van-checkbox name="政治" shape="square">政治</van-checkbox>
+          <van-checkbox name="化学" shape="square">化学</van-checkbox>
+          <van-checkbox name="生物" shape="square">生物</van-checkbox>
+          <van-checkbox name="物理" shape="square">物理</van-checkbox>
+        </van-checkbox-group>
+      </van-collapse-item>
+    </van-collapse>
+
+    <van-field
+      label="高考分数"
+      placeholder="请输入分数"
+      type="number"
+      value="{{ score }}"
+      bind:input="onFieldInput"
+      data-field="score"
+      required
+    />
+    <van-field
+      label="高考排名"
+      placeholder="请输入排名"
+      type="number"
+      value="{{ rank }}"
+      bind:input="onFieldInput"
+      data-field="rank"
+      required
+    />
+  </van-cell-group>
+
+  <view class="submit-btn-container">
+    <!-- Bind tap event, add loading state -->
+    <van-button
+      type="primary"
+      block
+      round
+      color="#1989fa"
+      bind:tap="handleSubmit"
+      loading="{{ isLoading }}"
+      loading-text="提交中..."
+    >
+      提交
+    </van-button>
+  </view>
+</view>

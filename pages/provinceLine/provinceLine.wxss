@@ -1,0 +1,139 @@
+/* pages/provinceLine/provinceLine.wxss */
+.container {
+  background-color: #f7f8fa;
+  min-height: 100vh;
+  padding-bottom: 20rpx;
+}
+
+/* 顶部选择栏 */
+.van-cell {
+   /* 可选：增加上下边距或调整样式 */
+   margin-bottom: 20rpx;
+}
+
+/* 列表容器 */
+.line-list-container {
+    padding: 0 20rpx;
+}
+
+.list-title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20rpx 0;
+    color: #303133;
+}
+
+/* 列表项样式 */
+.line-item {
+    background-color: #fff;
+    border-radius: 12rpx;
+    padding: 20rpx;
+    margin-bottom: 20rpx;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    color: #606266;
+}
+ .line-item:last-child {
+   margin-bottom: 0;
+}
+
+.line-row {
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+    margin-bottom: 10rpx;
+}
+.line-row:last-child {
+   margin-bottom: 0;
+}
+
+.label {
+    color: #909399;
+    margin-right: 8rpx;
+}
+
+.value {
+    color: #303133;
+    margin-right: 20rpx; /* 值之间的间距 */
+}
+.value.score {
+    font-weight: bold;
+    color: #ee0a24; /* 分数用红色突出 */
+}
+
+
+/* 弹出层样式 */
+.filter-popup-content {
+    padding: 30rpx;
+    box-sizing: border-box;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.popup-header {
+    display: flex;
+    justify-content: center; /* 标题居中 */
+    align-items: center;
+    position: relative; /* 为了定位关闭按钮 */
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40rpx;
+}
+.close-icon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #969799;
+    padding: 10rpx; /* 增大点击区域 */
+}
+.filter-options {
+    flex: 1;
+    overflow-y: auto;
+    display: flex; /* 左右布局 */
+}
+.option-group {
+    flex: 1;
+    padding: 0 10rpx;
+}
+ .year-group {
+     border-left: 1px solid #ebedf0; /* 中间加条分割线 */
+ }
+.option-item {
+    padding: 20rpx 10rpx;
+    font-size: 15px;
+    text-align: center;
+}
+.option-item.selected {
+    color: #1989fa;
+    font-weight: bold;
+    position: relative;
+}
+/* 模拟选中下划线 */
+.option-item.year-item.selected::after {
+    content: '';
+    position: absolute;
+    bottom: 10rpx;
+    left: 40%;
+    right: 40%;
+    height: 2px;
+    background-color: #1989fa;
+}
+
+
+.list-loading, .list-error, .list-empty {
+  text-align: center; color: #969799; padding: 100rpx 0; font-size: 14px;
+}
+.list-error { color: #ee0a24; }
+
+/* 调整弹出层选项样式，使其更像按钮 */
+.filter-options .option-item {
+    border: 1px solid #eee; border-radius: 8rpx; margin-bottom: 15rpx;
+}
+.filter-options .option-item.selected {
+     background-color: #e6f7ff; border-color: #1989fa;
+     color: #1989fa; font-weight: normal; /* 移除加粗和下划线 */
+}
+.filter-options .option-item.selected::after { display: none; } /* 移除下划线 */
